@@ -25,10 +25,10 @@ function processFirstItem(stringList, callback) {
 /* Task 1: `counterMaker`
  * Study the code for counter1 and counter2. Answer the questions below.
  *
- * 1. What is the difference between counter1 and counter2?
+ * 1. What is the difference between counter1 and counter2? counter 1 has a nested function, counter(). It is a higher order function, it returns another function.
  *
- * 2. Which of the two uses a closure? How can you tell? Counter 1, it has a nested function calling count
- *
+ * 2. Which of the two uses a closure? How can you tell? Counter 1, because it has a nested function
+ *  *
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better?
  *
  */
@@ -54,9 +54,9 @@ function counter2() {
 
 Write a function called `inning` that returns a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
 
-function inning() {
-  var score = Math.floor(Math.random() * 3);
-  return score;
+function inning(runs) {
+  var runs = Math.floor(Math.random() * 3);
+  return runs;
 }
 
 /* Task 3: finalScore()
@@ -64,6 +64,10 @@ function inning() {
 Write a higher order function called `finalScore` that accepts the callback function `inning` (from above) and a number of innings and and returns the final score of the game in the form of an object.
 
 For example, 
+
+
+
+
 
 finalScore(inning, 9) might return: 
 {
@@ -74,7 +78,15 @@ finalScore(inning, 9) might return:
 */
 
 function finalScore(inning, numInnings) {
-  let finalScore = { Home: 0, Away: 0 };
+  let final = {
+    Home: 0,
+    Away: 0,
+  };
+  for (i = 0; i < numInnings; i++) {
+    final.Home += inning();
+    final.Away += inning();
+  }
+  return final;
 }
 
 /* Task 4: 
@@ -97,6 +109,6 @@ and returns the score at each pont in the game, like so:
 9th inning: awayTeam - homeTeam
 Final Score: awayTeam - homeTeam */
 
-function scoreboard(/* CODE HERE */) {
+function scoreboard(getInningScore, inning, numInnings) {
   /* CODE HERE */
 }
