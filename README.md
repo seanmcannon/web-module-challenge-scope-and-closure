@@ -42,6 +42,9 @@ Find the file `index.js` and complete the tasks.
 Edit the `ReadMe` file with your answers.
 
 1. In your own words, define closure (1-2 sentences).
+
+Closure is the ability for a inner function to call an outer functiuons scope. Inner fuynction has access to outer functions variables.
+
 2. Study the following code, then answer the questions below.
 
 ```js
@@ -61,9 +64,11 @@ dansRoll();
 dansRoll();
 ```
 
-a. Where is closure used in this code? How can you tell?
+a. Where is closure used in this code? How can you tell? @ return function() {. Can tell because it is a nested function within personalDice
+
 b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
-c. What is the lexical scope of `newRoll`?
+
+c. What is the lexical scope of `newRoll`? within newRoll
 
 ### Task 2c - Exit Ticket
 

@@ -64,11 +64,6 @@ function inning(runs) {
 Write a higher order function called `finalScore` that accepts the callback function `inning` (from above) and a number of innings and and returns the final score of the game in the form of an object.
 
 For example, 
-
-
-
-
-
 finalScore(inning, 9) might return: 
 {
   "Home": 11,
@@ -78,15 +73,13 @@ finalScore(inning, 9) might return:
 */
 
 function finalScore(inning, numInnings) {
-  let final = {
-    Home: 0,
-    Away: 0,
-  };
+  let score = { Home: 0, Away: 0 };
   for (i = 0; i < numInnings; i++) {
-    final.Home += inning();
-    final.Away += inning();
+    score.Home += inning();
+    score.Away += inning();
+    // console.log(score);
   }
-  return final;
+  console.log(score);
 }
 
 /* Task 4: 
@@ -109,6 +102,46 @@ and returns the score at each pont in the game, like so:
 9th inning: awayTeam - homeTeam
 Final Score: awayTeam - homeTeam */
 
-function scoreboard(getInningScore, inning, numInnings) {
-  /* CODE HERE */
+function scoreboard(getInningScore, numInnings2) {
+  let scoreboardScore = { Home: 0, Away: 0 };
+  for (i = 0; i < numInnings2; i++) {
+    scoreboardScore.Home += inning();
+    scoreboardScore.Away += inning();
+    console.log(
+      `Inning ${i + 1}: Away Team: ${scoreboardScore.Away} - Home Team: ${
+        scoreboardScore.Home
+      }`
+    );
+  }
+  console.log(
+    `Final Score: Away Team: ${scoreboardScore.Away} - Home Team: ${scoreboardScore.Home}`
+  );
 }
+
+// score.Home += inning();
+// score.Away += inning();
+// }
+
+//   let scoreboardScore = { Home: 0, Away: 0 };
+//   for (i = 0; i < numInnings; i++) {
+//     scoreboardScore.Home += inning();
+//     scoreboardScore.Away += inning();
+//   return scoreboardScore;
+// }
+// }
+
+
+function personalDice(name) {
+  return function () {
+    // generate random number between 1 and 6
+    const newRoll = Math.floor(Math.random() * 6);
+    console.log(`${name} rolled a ${newRoll}`);
+  };
+}
+
+const dansRoll = personalDice("Dan");
+
+const zoesRoll = personalDice("Zoe");
+
+dansRoll();
+dansRoll();
