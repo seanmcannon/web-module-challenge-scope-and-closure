@@ -51,7 +51,6 @@ function counter2() {
 }
 
 /* Task 2: inning() 
-
 Write a function called `inning` that returns a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
 
 function inning(runs) {
@@ -60,16 +59,13 @@ function inning(runs) {
 }
 
 /* Task 3: finalScore()
-
 Write a higher order function called `finalScore` that accepts the callback function `inning` (from above) and a number of innings and and returns the final score of the game in the form of an object.
-
 For example, 
 finalScore(inning, 9) might return: 
 {
   "Home": 11,
   "Away": 5,
 }
-
 */
 
 function finalScore(inning, numInnings) {
@@ -77,19 +73,16 @@ function finalScore(inning, numInnings) {
   for (i = 0; i < numInnings; i++) {
     score.Home += inning();
     score.Away += inning();
-    // console.log(score);
+    console.log(score);
   }
-  console.log(score);
+  return score;
 }
 
 /* Task 4: 
-
 Create a function called `scoreboard` that accepts the following parameters: 
-
 (1) Callback function `getInningScore`
 (2) Callback function `inning`
 (3) A number of innings
-
 and returns the score at each pont in the game, like so:
 1st inning: awayTeam - homeTeam
 2nd inning: awayTeam - homeTeam
@@ -102,46 +95,19 @@ and returns the score at each pont in the game, like so:
 9th inning: awayTeam - homeTeam
 Final Score: awayTeam - homeTeam */
 
-function scoreboard(getInningScore, numInnings2) {
-  let scoreboardScore = { Home: 0, Away: 0 };
-  for (i = 0; i < numInnings2; i++) {
-    scoreboardScore.Home += inning();
-    scoreboardScore.Away += inning();
-    console.log(
-      `Inning ${i + 1}: Away Team: ${scoreboardScore.Away} - Home Team: ${
-        scoreboardScore.Home
-      }`
-    );
+// let scoreboardScore = { Home: 0, Away: 0 };
+
+function scoreboard(getInningScore, numInnings) {
+  let inningScore = { Home: 0, Away: 0 };
+  for (i = 0; i < numInnings; i++) {
+    inningScore.Home = getInningScore.Home;
+    inningScore.Away = getInningScore.Away;
+    // console.log(`Inning ${i}: Home Team: ${inningScore.Home} - Away Team: ${inningScore.Away}`);
   }
   console.log(
-    `Final Score: Away Team: ${scoreboardScore.Away} - Home Team: ${scoreboardScore.Home}`
+    `Final Score: Home Team: ${getInningScore.Home} - Away Team: ${getInningScore.Away}`
   );
 }
-
-// score.Home += inning();
-// score.Away += inning();
-// }
-
-//   let scoreboardScore = { Home: 0, Away: 0 };
-//   for (i = 0; i < numInnings; i++) {
-//     scoreboardScore.Home += inning();
-//     scoreboardScore.Away += inning();
-//   return scoreboardScore;
-// }
-// }
-
-
-function personalDice(name) {
-  return function () {
-    // generate random number between 1 and 6
-    const newRoll = Math.floor(Math.random() * 6);
-    console.log(`${name} rolled a ${newRoll}`);
-  };
-}
-
-const dansRoll = personalDice("Dan");
-
-const zoesRoll = personalDice("Zoe");
-
-dansRoll();
-dansRoll();
+// console.log(`Final Score: Home Team: ${scoreboardScore.Home} - Away Team: ${scoreboardScore.Away}`);
+// scoreboardScore.Home += inningScore.Home;
+// scoreboardScore.Away += inningScore.Away;
